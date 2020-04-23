@@ -14,6 +14,7 @@ The interactive mode implements these two last options as 'enter' and 'get'.
 The layout of the task items is described in the "task_fields" dictionary,
 where the keys are the fields and the values, the SQL data type.
 """
+import os
 import sys
 import json
 import sqlite3
@@ -22,8 +23,10 @@ import datetime
 from definitions import *
 
 username = 'default'
-db_file = 'dbs/' + username + '.db'
-
+db_dir = os.getcwd() + '/dbs'
+db_file = db_dir + '/' + username + '.db'
+if not os.path.isdir(db_dir):
+    os.makedirs(db_dir)
 
 # Ensure that the database exists and the table is created
 def ensure_table():

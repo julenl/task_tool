@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
 
+import os
 import datetime
 
 try:
@@ -14,6 +15,10 @@ except ModuleNotFoundError as e:
 
 from lib_db import get_items
 
+imgs_dir = os.getcwd() + '/imgs'
+# Make sure the imgs directory exists
+if not os.path.isdir(imgs_dir):
+    os.makedirs(imgs_dir)
 
 def stat_run_time():
     tasks = get_items()
