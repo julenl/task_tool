@@ -4,7 +4,7 @@
       <a class="navbar-brand" href="/">Task Tool</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="/">Dashboard</a></li>
+      <li><a href="/">Dashboard</a></li>
       <li><a href="/form">New Task</a></li>
       <li><a href="/stats">Stats</a></li>
       <li><a href="/tasks">Active Tasks</a></li>

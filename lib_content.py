@@ -130,22 +130,22 @@ def create_box(task:dict)->list:
     bs_color = status[task['status']]['bs_color']
     html.append('<a class="btn btn-info" role="button">')
     html.append('  <div class="bg-' + bs_color + '">')
-    html.append('    <h4>' + task['name'] + '</h4>')
-    html.append('    <h5>' + label + '</h5>')
+    html.append('    <h4 style="color: black;">' + task['name'] + '</h4>')
+    html.append('    <h5 style="color: black;">' + label + '</h5>')
     html.append('    <form method="post" action="form">')
     html.append('      <input type="hidden" name="name" value="' + task['name'] +'">')
     html.append('      <input type="hidden" name="focus" value="dashboard">')
     epoch = datetime.datetime.now().strftime('%s')
     if task['status'] in [0,2,3,4,5]:
         html.append('      <input type="hidden" name="start_time" value="' + str(epoch) + '">')
-        html.append('      <button type="submit" name="status" value="1">Start</button>')
+        html.append('      <button style="color: black;" type="submit" name="status" value="1">Start</button>')
     else:
         # The task is running
         html.append('      <input type="hidden" name="start_time" value="None">')
 
         last_dt = int(epoch) - int(task['start_time'])
         time_str = str(datetime.timedelta(seconds=last_dt))
-        html.append('      <p>' + time_str + '</p>')
+        html.append('      <p style="color: black;">' + time_str + '</p>')
 
         if not task['run_time'] or task['run_time'] == 'NULL':
             task['run_time'] = "0"
@@ -159,8 +159,8 @@ def create_box(task:dict)->list:
         html.append('    <input type="hidden" name="active_periods" value="' +
                     ','.join(active_periods) + '">')
 
-        html.append('      <button type="submit" name="status" value="2">Stop</button>')
-        html.append('      <button type="submit" name="status" value="4">Finish</button>')
+        html.append('      <button style="color: black;" type="submit" name="status" value="2">Stop</button>')
+        html.append('      <button style="color: black;" type="submit" name="status" value="4">Finish</button>')
     html.append('    </form>')
     html.append('  </div>')
     html.append('</a>')

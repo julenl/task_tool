@@ -14,23 +14,20 @@
 <body>
 
 %include('navigation')
+%setdefault('content','')
 
-%if defined('tasks'):
+% if defined('db_empty'):
+%  include('test_tasks')
+% elif defined('tasks'):
 %  include('task_table', tasks=tasks)
-% end
-
-% if defined('stats'):
+% elif defined('stats'):
 %   for k, v in stats.items():
     <div> <img src="{{v}}"></div>
 %   end
-% end
-
-% if not defined('tasks') and not defined('stats'):
-%  include('test_tasks')
-% end
-
-%setdefault('content','')
+% else:
 {{!content}}
+% end
+
 
 </body>
 </html>
